@@ -48,4 +48,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.session.run(configuration)
     }
+    
+    //MARK: AR detection delegate
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+        
+        if let imageAnchor = anchor as? ARImageAnchor {
+            let size = imageAnchor.referenceImage.physicalSize
+            
+            let plane = SCNPlane(width: size.width, height: size.height)
+            
+            //Detect which card it is
+            switch imageAnchor.referenceImage.name {
+            case "card1":
+                print("card1 detected")
+                plane.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.8)
+                break
+            case "card2":
+                print("card2 detected")
+                plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.8)
+                break
+            default:
+                break
+            }
+            
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.eulerAngles.x = -.pi / 2
+            node.addChildNode(planeNode)
+        }
+        
+        
+        return node
+    }
 }
