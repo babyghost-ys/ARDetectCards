@@ -5,4 +5,4 @@ May require the Xcode 10 beta to open it.
 
 Using ARKit 2 to detect images is easier. This demo shows how to do that easily. This is what will happen if the ARKit found the cards.
 
-<img src="https://github.com/babyghost666/ARDetectCards/blob/master/ARDetectCards/Assets.xcassets/screenshot.imageset/screenshot.jpg?raw=true">
+<img src="https://github.com/babyghost-ys/ARDetectCards/blob/master/ARDetectCards/Assets.xcassets/screenshot.imageset/screenshot.jpg?raw=true">
