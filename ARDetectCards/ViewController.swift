@@ -27,6 +27,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        startToTrackImages()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -34,5 +35,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    //MARK: Function to start to track images
+    func startToTrackImages() {
+        let configuration = ARImageTrackingConfiguration()
+        
+        if let trackingImages = ARReferenceImage.referenceImages(inGroupNamed: "Cards", bundle: Bundle.main) {
+            configuration.trackingImages = trackingImages
+            configuration.maximumNumberOfTrackedImages = 2
+        }
+        
+        sceneView.session.run(configuration)
     }
 }
